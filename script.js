@@ -1,7 +1,8 @@
-var highScores = document.getElementById("View High Scores")
+var highScoresEl = document.getElementById("highScoresContainer")
 var timeEl = document.querySelector(".time")
 var getStarted = document.getElementById("start")
 var mainEl  = document.getElementById("container")
+var questionsEl = document.getElementById("questionsContainer")
 
 
 var secondsLeft = 60;
@@ -22,7 +23,7 @@ var myQuestions = [
 //iterate through questions
 for (var i = 0; i < myQuestions.length; i++) {
     //display question
-    var answer = "onclick"(myQuestions[i].q);
+    var answer = addEvenListener.onclick(myQuestions[i].c);
 
     //compare answer
     if(answer === myQuestions[i].a){
@@ -31,9 +32,8 @@ for (var i = 0; i < myQuestions.length; i++) {
     else {
         secondsLeft - 10000;
     }
-
-
 }
+
 getStarted.addEventListener('click', StartGame())
 
 //Create timer countdown
@@ -44,16 +44,29 @@ function setTime() {
 
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
+            localStorage.setItem("score", score);
             alert("Time's up!");
-            // highScorePage();
+            highScorePage();
         }
     }, 1000)
 }
 
-//start game
+// //start game
 function startGame() {
     setTime();
-    questions
+    askQuestions();
 }
 
+function askQuestions() {
+    mainEl.textContent = "";
+    var newQuestion = document.createElement("h3");
+    newQuestion.innerHTML(myQuestions[i]);
+    mainEl.appendChild(newQuestion)
+    var choice1 = document.createElement("button");
+    choice1.setAttribute("button", "")
+}
 
+function highScorePage() {
+    window.textContent = "";
+    document.getElementById("result").innerHTML = localStorage.getItem()
+}
