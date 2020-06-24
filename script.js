@@ -1,27 +1,43 @@
 var highScores = document.getElementById("View High Scores")
 var timeEl = document.querySelector(".time")
 var getStarted = document.getElementById("start")
+var mainEl  = document.getElementById("container")
 
 
 var secondsLeft = 60;
+var score = 0;
 
 
 
-//Quiz Questions
 
-// var myQuestions = [
-//     new question("Who invented JavaScript?", ["Douglas Crockford", "Sheryl Sandberg", "Brenden Eich", "Jerome Chenette"], "Brenden Eich"),
-//     new question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
-//     new question("Which is not a JavaScript Framework?", ["Python Script", "JQuery","Django", "NodeJS"], "Django"),
-//     new question("Which is used for Connect To Database?", ["PHP", "HTML", "JS", "All"], "PHP"),
-//     new question("Webdevtrick.com is about..", ["Web Design", "Graphic Design", "SEO & Development", "All"], "All"),
-//     new question("Who invented JQuery?", ["John Resig", "Timmy Willison", "Bill Gates", "Jeff Bezos"], "John Resig"),
-// ]
+var myQuestions = [
+    {q: "Who invented JavaScript?", c: ["Douglas Crockford", "Sheryl Sandberg", "Brenden Eich", "Jerome Chenette"], a: "Brenden Eich"},
+    {q: "Which language is used for styling web pages?", c: ["HTML", "JQuery", "CSS", "XML"], a:"CSS"},
+    {q: "Which is not a JavaScript Framework?", c: ["Python Script", "JQuery","Django", "NodeJS"], a: "Django"},
+    {q: "Which is used for Connect To Database?", c: ["PHP", "HTML", "JS", "All"], a: "PHP"},
+    {q: "Webdevtrick.com is about..", c: ["Web Design", "Graphic Design", "SEO & Development", "All"], a: "All"},
+    {q: "Who invented JQuery?", c: ["John Resig", "Timmy Willison", "Bill Gates", "Jeff Bezos"], a: "John Resig"},
+]
 
-// getStarted.addEventListener('click', StartGame())
+//iterate through questions
+for (var i = 0; i < myQuestions.length; i++) {
+    //display question
+    var answer = "onclick"(myQuestions[i].q);
+
+    //compare answer
+    if(answer === myQuestions[i].a){
+        score++;
+    }
+    else {
+        secondsLeft - 10000;
+    }
+
+
+}
+getStarted.addEventListener('click', StartGame())
 
 //Create timer countdown
-function setTime () {
+function setTime() {
     var timerInterval = setInterval(function() {
         secondsLeft--;
         timeEl.textContent = "Time: " + secondsLeft;
@@ -33,9 +49,11 @@ function setTime () {
         }
     }, 1000)
 }
-console.log(setTime);
-setTime();
 
-// function startGame() {
+//start game
+function startGame() {
+    setTime();
+    questions
+}
 
 

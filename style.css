@@ -1,7 +1,12 @@
-.container {
-    align-items: center;
+#container {
+    text-align: center;
+    margin-top: 250px;
+    border-color: black;
+    border: black;
+    border: 10px;
+    padding: 20px;
 }
 
-.timer {
+.time {
     text-align: right;
 }
