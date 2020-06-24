@@ -11,14 +11,8 @@ var choice3 = document.getElementById("choice3")
 var choice4 = document.getElementById("choice4")
 var highScoreInitials = document.getElementById("initials")
 var scoreSubmit = document.getElementById("scoreSubmit")
-
-
-
 var secondsLeft = 60;
 var score = 0;
-
-
-
 
 var myQuestions = [
     {q: "Who invented JavaScript?", c: ["Douglas Crockford", "Sheryl Sandberg", "Brenden Eich", "Jerome Chenette"], a: "Brenden Eich"},
@@ -29,21 +23,39 @@ var myQuestions = [
     {q: "Who invented JQuery?", c: ["John Resig", "Timmy Willison", "Bill Gates", "Jeff Bezos"], a: "John Resig"},
 ]
 
-//iterate through questions
-for (var i = 0; i < myQuestions.length; i++) {
-    //display question
-    var answer = addEvenListener.onclick(myQuestions[i].c);
 
-    //compare answer
-    if(answer === myQuestions[i].a){
-        score++;
-    }
-    else {
-        secondsLeft - 10000;
-    }
+getStarted.addEventListener("click", startGame()) 
+
+//start game
+function startGame() {
+    //hide container div so questions can start to pop up in its place
+    setTime();
+    askQuestions();
 }
 
-getStarted.addEventListener('click', startGame())
+//iterate through questions
+function askQuestion () {
+    for (var i = 0; i < myQuestions.length; i++) {
+        //hide container
+        //display question
+        newQuestion.textContent = myQuestions[i].q;
+        choice1.textContent = myQuestions[i].c[0];
+        choice2.textContent = myQuestions[i].c[1];
+        choice3.textContent = myQuestions[i].c[2];
+        choice4.textContent = myQuestions[i].c[3];
+
+        var answer = addEvenListener.onclick(myQuestions[i].c);
+
+        //compare answer
+        if(answer === myQuestions[i].a){
+            score +=10;
+        }
+        else {
+            secondsLeft -= 10000;
+        }
+    }
+}
+    
 
 //Create timer countdown
 function setTime() {
@@ -60,11 +72,7 @@ function setTime() {
     }, 1000)
 }
 
-//start game
-function startGame() {
-    setTime();
-    askQuestions();
-}
+
 
 // function askQuestions() {
 //     mainEl.textContent = "";
@@ -77,6 +85,13 @@ function startGame() {
 
 function highScorePage() {
     window.textContent = "";
-    document.getElementById("result").innerHTML = localStorage.getItem()
+
+    // document.getElementById("result").innerHTML = localStorage.getItem()
+    var highScores = [];
+    //create a new list item for each score
+    // for (var i = 0; i < highScores.length; i++) {
+    //     score = highScores[i] + scoreSubmit;
 }
+
+
 
