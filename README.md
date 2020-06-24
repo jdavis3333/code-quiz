@@ -77,7 +77,7 @@ function setTime() {
 
 ## Deployed Link
 
-* [See Live Site](#)
+* [See Live Site](https://jdavis3333.github.io/code-quiz/)
 
 
 ## Authors
